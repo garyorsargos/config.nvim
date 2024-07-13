@@ -1,0 +1,6 @@
+require "gary.options"
+require "gary.keymaps"
+require "gary.plugins"
+require "gary.colorscheme"
+require "gary.compl"
+require "gary.lsp"
