@@ -39,10 +39,16 @@ packer.init {
 }
 
 return packer.startup(function(use)
-  -- My plugins here
+  -- Base Functionality
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+
+  -- File Explorer
+  use 'nvim-tree/nvim-web-devicons' -- Special Icons for File Explorer
+  use 'nvim-tree/nvim-tree.lua' -- File Explorer
+
+  -- Themes
   use "lunarvim/colorschemes" -- Set of Colorschemes from LunarVim Community
   use "bluz71/vim-moonfly-colors" -- Personal Favorite Colorscheme
 
@@ -64,18 +70,18 @@ return packer.startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
 
   -- Telescope
-  use "nvim-telescope/telescope.nvim"
-  use "nvim-telescope/telescope-media-files.nvim"
+  use "nvim-telescope/telescope.nvim" -- Fuzzy Finder
+  use "nvim-telescope/telescope-media-files.nvim" -- Media Extension for Fuzzy Finder
 
   -- Treesitter
   use {
-    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter", -- Better Syntax Highlighting
     run = ":TSUpdate",
   }
 
   -- Autopair
   use {
-    "windwp/nvim-autopairs",
+    "windwp/nvim-autopairs", -- Autopairing Brackets etc.
     event = "InsertEnter",
     config = function()
         require("nvim-autopairs").setup {}
@@ -85,7 +91,7 @@ return packer.startup(function(use)
   -- GitIntegration --
   -- GitSigns
   use {
-    "lewis6991/gitsigns.nvim",
+    "lewis6991/gitsigns.nvim", -- Git Blame Tracking on Sidelines
     config = function()
         require('gitsigns').setup {}
     end
