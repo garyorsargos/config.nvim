@@ -97,6 +97,20 @@ return packer.startup(function(use)
     end
   }
 
+  -- StatusLine
+  use {
+  'nvim-lualine/lualine.nvim', -- Lightweight Status Line Implementation
+  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
+
+  -- Floating CommandLine
+  use {
+  'VonHeikemen/fine-cmdline.nvim',
+  requires = {
+    {'MunifTanjim/nui.nvim'}
+    }
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
