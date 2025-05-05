@@ -1,15 +1,20 @@
+-- Load configuration modules
+require("config.options")
+require("config.lazy")
+
+-- Disable error reporting
+vim.lsp.set_log_level("off")
+vim.notify = function() end
+
+-- Override vim.notify to suppress all notifications
+local original_notify = vim.notify
+vim.notify = function(msg, level, opts)
+  return
+end
+
 -- Set leader key to space
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
--- Force line numbers
-vim.opt.number = true
-
--- force 2‑space Lua indents, after all ftplugins/indent scripts
-vim.opt_local.shiftwidth   = 2
-vim.opt_local.tabstop      = 2
-vim.opt_local.softtabstop  = 2
-vim.opt_local.expandtab    = true
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -35,7 +40,7 @@ require("lazy").setup({
     { import = "plugins.git" },
     { import = "plugins.null-ls" },
     { import = "plugins.writing" },
-    { import = "plugins.project" },
+    { import = "plugins.lazygit" },
   },
   defaults = {
     lazy = false,
