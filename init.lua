@@ -5,11 +5,11 @@ vim.g.maplocalleader = " "
 -- Force line numbers
 vim.opt.number = true
 
--- force 2‑space Lua indents, after all ftplugins/indent scripts
-vim.opt_local.shiftwidth   = 2
-vim.opt_local.tabstop      = 2
-vim.opt_local.softtabstop  = 2
-vim.opt_local.expandtab    = true
+-- Set global 2‑space indentation
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -36,12 +36,13 @@ require("lazy").setup({
     { import = "plugins.null-ls" },
     { import = "plugins.writing" },
     { import = "plugins.project" },
+    { import = "plugins.colorscheme" },
   },
   defaults = {
     lazy = false,
     version = false,
   },
-  install = { colorscheme = { "moonfly" } },
+  install = { colorscheme = { "kanagawa" } },
   checker = { enabled = true },
   performance = {
     rtp = {
@@ -69,5 +70,8 @@ vim.api.nvim_create_autocmd("User", {
     
     -- Load keymaps
     require("config.keymaps")
+    
+    -- Set colorscheme
+    vim.cmd.colorscheme("kanagawa")
   end,
 }) 
