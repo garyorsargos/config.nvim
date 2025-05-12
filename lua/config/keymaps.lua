@@ -1,6 +1,23 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+-- Movement keys (jkl; instead of hjkl)
+keymap("n", "j", "h", opts)  -- Left
+keymap("n", "k", "j", opts)  -- Down
+keymap("n", "l", "k", opts)  -- Up
+keymap("n", ";", "l", opts)  -- Right
+
+-- Also set these for visual and insert modes
+keymap("v", "j", "h", opts)
+keymap("v", "k", "j", opts)
+keymap("v", "l", "k", opts)
+keymap("v", ";", "l", opts)
+
+keymap("i", "j", "h", opts)
+keymap("i", "k", "j", opts)
+keymap("i", "l", "k", opts)
+keymap("i", ";", "l", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
